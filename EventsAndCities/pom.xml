@@ -9,14 +9,14 @@
 		<version>2.4.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.devsuperior</groupId>
-	<artifactId>bds04</artifactId>
+	<groupId>com.ajunior</groupId>
+	<artifactId>validationAndSecurity</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bds04</name>
 	<description>Bootcamp Spring React DevSuperior</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
 	</properties>
 
