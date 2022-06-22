@@ -1,4 +1,4 @@
-package com.devsuperior.bds04.tests;
+package com.ajunior.security.tests;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

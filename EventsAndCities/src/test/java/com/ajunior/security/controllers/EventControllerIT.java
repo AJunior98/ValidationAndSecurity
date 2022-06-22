@@ -1,7 +1,8 @@
-package com.devsuperior.bds04.controllers;
+package com.ajunior.security.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -17,8 +18,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.devsuperior.bds04.dto.EventDTO;
-import com.devsuperior.bds04.tests.TokenUtil;
+import com.ajunior.security.dto.EventDTO;
+import com.ajunior.security.tests.TokenUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -185,4 +186,47 @@ public class EventControllerIT {
 		result.andExpect(status().isOk());
 		result.andExpect(jsonPath("$.content").exists());
 	}	
+	
+	//Testes do capitulo 2
+	@Test
+	public void updateShouldUpdateResourceWhenIdExists() throws Exception {
+
+		long existingId = 1L;
+		
+		EventDTO dto = new EventDTO(null, "Expo XP", LocalDate.of(2021, 5, 18), "https://expoxp.com.br", 7L);
+		String jsonBody = objectMapper.writeValueAsString(dto);
+		
+		ResultActions result =
+				mockMvc.perform(put("/events/{id}", existingId)
+					.content(jsonBody)
+					.contentType(MediaType.APPLICATION_JSON)
+					.accept(MediaType.APPLICATION_JSON));
+		
+		result.andExpect(status().isOk());
+		result.andExpect(jsonPath("$.id").exists());
+		result.andExpect(jsonPath("$.id").value(1L));		
+		result.andExpect(jsonPath("$.name").value("Expo XP"));
+		result.andExpect(jsonPath("$.date").value("2021-05-18"));
+		result.andExpect(jsonPath("$.url").value("https://expoxp.com.br"));
+		result.andExpect(jsonPath("$.cityId").value(7L));
+	}
+
+	@Test
+	public void updateShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
+
+		long nonExistingId = 1000L;
+		
+		EventDTO dto = new EventDTO(null, "Expo XP", LocalDate.of(2021, 5, 18), "https://expoxp.com.br", 7L);
+		String jsonBody = objectMapper.writeValueAsString(dto);
+		
+		ResultActions result =
+				mockMvc.perform(put("/events/{id}", nonExistingId)
+					.content(jsonBody)
+					.contentType(MediaType.APPLICATION_JSON)
+					.accept(MediaType.APPLICATION_JSON));
+		
+		result.andExpect(status().isNotFound());
+	}
 }
+	
+

@@ -1,13 +1,13 @@
-package com.devsuperior.bds04;
+package com.ajunior.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Bds04Application {
+public class SegurityApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Bds04Application.class, args);
+		SpringApplication.run(SegurityApplication.class, args);
 	}
 
 }

@@ -1,8 +1,8 @@
-package com.devsuperior.bds04.dto;
+package com.ajunior.security.dto;
 
 import java.io.Serializable;
 
-import com.devsuperior.bds04.entities.City;
+import com.ajunior.security.entities.City;
 
 public class CityDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
