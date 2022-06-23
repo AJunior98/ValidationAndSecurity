@@ -3,15 +3,21 @@ package com.ajunior.security.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+
 import com.ajunior.security.entities.Event;
 
 public class EventDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+	@NotBlank(message = "Campo requerido")
 	private String name;
 	private LocalDate date;
 	private String url;
+	
+	@NotBlank(message = "Campo requerido")
 	private Long cityId;
 	
 	public EventDTO() {

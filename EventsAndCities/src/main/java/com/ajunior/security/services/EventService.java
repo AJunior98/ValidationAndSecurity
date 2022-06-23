@@ -14,8 +14,6 @@ import com.ajunior.security.entities.Event;
 import com.ajunior.security.repositories.EventRepository;
 import com.ajunior.security.services.exceptions.ResourceNotFoundException;
 
-
-
 @Service
 public class EventService {
 	
@@ -39,6 +37,14 @@ public class EventService {
 		catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id not found " + id);
 		}
+	}
+	
+	@Transactional
+	public EventDTO insert(EventDTO dto) {
+		Event entity = new Event();
+		copyDtoToEntity(dto, entity);
+		entity = repository.save(entity);
+		return new EventDTO(entity);
 	}
 
 	private void copyDtoToEntity(EventDTO dto, Event entity) {
