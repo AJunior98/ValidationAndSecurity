@@ -5,6 +5,7 @@ Criei este projeto para aplicar os conhecimentos de Spring boot security, conten
 Este projeto contém validação de dados com Bean Validation, autenticação e autorização com OAuth2 e JWT, configuração de CORS, restrição de acesso em nível de rotas, e uma estruturação para que dê suporte a segurança.
 
 O sistema de eventos e cidades contém uma relação N-1 entre eles, conforme a imagem abaixo: 
+
 ![image](https://user-images.githubusercontent.com/100853329/175298511-d1ea99ec-b650-442d-b8cd-d353df949093.png)
 
 Neste sistema, somente as rotas de leitura (GET) de eventos e cidades são públicas (não precisa de login). Usuários CLIENT podem também inserir (POST) novos eventos. Os demais acessos são permitidos apenas a usuários ADMIN.
